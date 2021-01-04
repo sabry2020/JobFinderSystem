@@ -3,9 +3,7 @@ package jobfindersys;
 import java.util.*;
 import java.util.Scanner;
 import static jobfindersys.CompanyAdmin.c_admins;
-import static jobfindersys.JobPoster.JobPostersOfDELL;
-import static jobfindersys.JobPoster.JobPostersOfLENOVO;
-import static jobfindersys.JobPoster.JobPostersOfSAMSUNG;
+
 import static jobfindersys.JobVacancy.J_Vacancy;
 
 import java.util.ArrayList;
@@ -29,8 +27,16 @@ if(canFire){
 static void DisplayCompanyInfo(Company comp){
     System.out.println("\n Company name is "+comp.CompanyName+"\n Company number of Employees are "+comp.CompanyNumberOfEmployees);
     System.out.println("\n And for the reviews ");
+    if(comp.CompanyReviews!=null)
+    {
     for(int i=0; i<comp.CompanyReviews.length;i++){
+        
         System.out.println("\n review"+(i+1)+" is \t"+comp.CompanyReviews[i]);
+    }
+  
+    }
+    else{
+        System.out.println("\n There is no reviews added till now  ");
     }
 }
 
@@ -284,15 +290,18 @@ int[]rev3={4,5,3};
     
        
         int opt;
+        boolean companyRegistered=false;
+        
         String Continue="Continue";
         while(Continue.equals("Continue"))
         {
+            
        
        
         //Options 
   
         //Add a loop to repeat taking options from user 
-        System.out.print("What Do you Want to Do \n 1.Login as JobPoster\n 2.Browse Jobs \n 3.AddReviews \n 4.Apply to a Job \n 5.Run as administrator \n 6.Exit ");
+        System.out.print("What Do you Want to Do \n 1.Login as JobPoster\n 2.Browse Jobs \n 3.AddReviews \n 4.Apply to a Job \n 5.Run as administrator \n 6.Display Company Info \n 7.Exit ");
         opt =input.nextInt();
         
         
@@ -342,6 +351,7 @@ int[]rev3={4,5,3};
              
            input.useDelimiter("\n");
            String choice=input.next();
+           companyRegistered=true;
            
              System.out.println("Enter the description \n");
             
@@ -388,6 +398,8 @@ int[]rev3={4,5,3};
 */
            // System.out.println("Job Posts are "+Arrays.toString(STACK.toArray()));//look for purified Stack display 
             //STACK.forEach(System.out::println);
+            if(companyRegistered)
+            {
             System.out.println("Job Posts avialable are as follows :");
             if(numberChoice==0)
             {
@@ -409,6 +421,10 @@ int[]rev3={4,5,3};
                 //jobPost array must be pushed succesfully 
                 System.out.println("Job Post:"+(i+1) +" \n "+"Name:"+jPostSamsung[i].name+"\n Description "+jPostSamsung[i].description);
             }
+            }
+        }
+            else{
+                System.out.println("Please register to your Company");
             }
         }
         
@@ -560,7 +576,8 @@ int[]rev3={4,5,3};
         }       
         else  if(opt==5){
             boolean LoggedIn=false;
-            
+            if(companyRegistered)
+            {
             System.out.println("Login as administrator ! \n ");
       System.out.println("Enter your email: ");
         String mail=input.next();   
@@ -600,12 +617,18 @@ int[]rev3={4,5,3};
        }
        
         }
+            else{
+                System.out.println("Please register to your company at opt1 ");
+            
+            }
+        }
           
   
            else if(opt==6){
             //enter the company you want to display 
             //System.out.println("Enter the name of the comapny you want to see"); encapsulization is needed 
-            
+            if(companyRegistered)
+            {
             if(numberChoice==0)
          DisplayCompanyInfo(Dell);
             
@@ -615,7 +638,11 @@ int[]rev3={4,5,3};
                       if(numberChoice==2)
          DisplayCompanyInfo(Samsung);
            
-            
+            }
+            else{
+                System.out.println("Please register to your Company");
+            }
+           
           }
            else if(opt==7){
                //Application.Quit();
