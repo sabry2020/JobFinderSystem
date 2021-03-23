@@ -8,6 +8,8 @@ import static jobfindersys.JobVacancy.J_Vacancy;
 
 import java.util.ArrayList;
 public class JobFINDERSYS {
+    
+                          //Custom Functions   
    
 static void ChangeCompanyInfo(Company comp, String choice, boolean canFire){
     
@@ -17,14 +19,14 @@ static void ChangeCompanyInfo(Company comp, String choice, boolean canFire){
 //decrement
 if(canFire){
            comp.CompanyNumberOfEmployees--;
-           
+           //preventing negative number 
            if(comp.CompanyNumberOfEmployees<0)
                comp.CompanyNumberOfEmployees=0;
             
         }
 }
         
-static void DisplayCompanyInfo(Company comp){
+static void DisplayCompanyInfo(Company comp, float avgReview){
     System.out.println("\n Company name is "+comp.CompanyName+"\n Company number of Employees are "+comp.CompanyNumberOfEmployees);
     System.out.println("\n And for the reviews ");
     if(comp.CompanyReviews!=null)
@@ -32,6 +34,24 @@ static void DisplayCompanyInfo(Company comp){
     for(int i=0; i<comp.CompanyReviews.length;i++){
         
         System.out.println("\n review"+(i+1)+" is \t"+comp.CompanyReviews[i]);
+       
+    }
+     System.out.println("\n the average review is "+ avgReview);
+  
+    }
+    else{
+        System.out.println("\n There is no reviews added till now  ");
+    }
+}
+static void DisplayCompanyInfo(Company comp){//for the view of the system admin (no need to know the average reviews)
+    System.out.println("\n Company name is "+comp.CompanyName+"\n Company number of Employees are "+comp.CompanyNumberOfEmployees);
+    System.out.println("\n And for the reviews ");
+    if(comp.CompanyReviews!=null)
+    {
+    for(int i=0; i<comp.CompanyReviews.length;i++){
+        
+        System.out.println("\n review"+(i+1)+" is \t"+comp.CompanyReviews[i]);
+        
     }
   
     }
@@ -44,8 +64,12 @@ static void DisplayCompanyInfo(Company comp){
         for(int i=0; i<jobPost.length;i++){
             if(desiredJobPost.equals(jobPost[i].name)){
                 System.out.print("found a match and it is "+jobPost[i].name+"Which is equals to "+desiredJobPost);
-                System.out.println("\n\n Loading ");
-                System.out.println("Job post Found \n "+jobPost[i].name+"\t"+jobPost[i].description);
+                for(int j=0; j<20;i++){
+                    if(j==0)
+                System.out.print("\n Loading.. ");
+                    System.out.print(".");
+                }
+                System.out.println("\nJob post Found \n "+jobPost[i].name+"\t"+jobPost[i].description);
                 break;
                 
             }
@@ -89,6 +113,14 @@ public static JobPost[] addJobPosts(int n , JobPost arr[], JobPost newObject){//
         return newarr; 
     
 }
+public static float calculateAverageReviews(int [] reviews){
+  
+   float sum=0;          
+    for(int i=0; i<reviews.length; i++)
+        sum+=(float)reviews[i];//preventing type conversion
+    
+   return sum/reviews.length;
+}
 
 
 
@@ -108,105 +140,46 @@ public static JobPost[] addJobPosts(int n , JobPost arr[], JobPost newObject){//
      
        
        
-        /*
-        JobPoster job_posters[]= new JobPoster[3];
-       
         
-        
-        JobSeeker job_seekers[]= new JobSeeker[2];
-        
-        
-      
-        
-        JobVacancy job_vacancies[]= new JobVacancy[5];
-    /*
-    CompanyAdmin c_admins[]= new CompanyAdmin[3];
-    CompanyAdmin c1=new CompanyAdmin(CompanyAdminsName, CompanyAdminsEmail, CompanyAdminsPassword, CompanyAdminsType, CompanyAdminID);
-    companyAdmin.Insert_CompanyAdmins(c_admins);
-*/
-    ///compsny admins 
-    
-       
-    
-    
-   
-    //end of CompanyAdmin Insertion 
-    
-    
-//    String JobPostersName, String JobPostersEmail, String JobPostersPassword, String JobPostersType
-
-
-   
-
-   
-        
-//     JobPoster J_Poster[]={J1,J2,J3};
-/*
-    JobPoster JobPostersOfDELL[]= {jp1,jp2,jp3};
-     JobPoster JobPostersOfLENOVO[]= {jp4,jp5,jp6};
-
-
-    
-/*
-    JobPoster.Insert_JP_DELL(JobPostersOfDELL);
-    JobPoster.Insert_JP_LENOVO(JobPostersOfLENOVO);
-    JobPoster.Insert_JP_SAMSUNG(JobPostersOfSAMSUNG);
-    */
-
-   
-
 //JobPosters 
 
+// One JobPoster for Each Company 
 
-JobPoster j1=new JobPoster("mohamed", "mohamed", "mohamed", "mohamed");
-JobPoster j2=new JobPoster("mohamed", "mohamed", "mohamed", "mohamed");
-JobPoster j3=new JobPoster("mohamed", "mohamed", "mohamed", "mohamed");
+JobPoster j1=new JobPoster("Mohamed Hosam", "sabry", "sabry123", "Job Poster");
 
-   JobPoster jpDell[]={j1,j2,j3};
+
+   JobPoster jpDell[]={j1};
     
    
-    JobPoster jp4 =new JobPoster("Sherief Mamdouh", "sabry", "sabry", "Job Poster");//only this is working 
-   JobPoster jp5=new JobPoster("Sherien Maged", "sherien_samsung@gmail.com", "sherien2020samsung", "Job Poster");
-   JobPoster jp6 =new JobPoster("Shady Mahmoud", "sabry3", "sabry", "Job Poster");
-
-
-   JobPoster jpLenovo[]={jp4,jp5,jp6};
-   
-   
-   
-   
-    JobPoster jp7 =new JobPoster("Sherief Mamdouh", "sabry", "sabry", "Job Poster");//only this is working 
-   JobPoster jp8 =new JobPoster("Sherien Maged", "sherien_samsung@gmail.com", "sherien2020samsung", "Job Poster");
-   JobPoster jp9 =new JobPoster("Shady Mahmoud", "sabry3", "sabry", "Job Poster");
-
-
-   JobPoster jpSamsung[]={jp7,jp8,jp9};
+    JobPoster jp4 =new JobPoster("Adham Shreif", "adham", "adham123", "Job Poster");
   
-    
-    
-//Vacancy Jobs 
-//JobVacancy V1 =new JobVacancy("mohamed",5);
-//    JobVacancy V2 =new JobVacancy("mohamed",7);
-//    JobVacancy V3 =new JobVacancy("mohamed",8);
-//    JobVacancy J_Vacancy[] =(V1,V2,V3};
-//    JobVacancy.Insert_JobVacancy(J_Vacancy);
-//
+
+   JobPoster jpLenovo[]={jp4};
+   
+   
+   
+   
+    JobPoster jp7 =new JobPoster("Nada", "nada", "nada123", "Job Poster");//only this is working 
+  
 
 
-
-       
-      
-        
+   JobPoster jpSamsung[]={jp7};
+  
+   
         
     CompanyAdmin cDell =new CompanyAdmin("","","","","");
     CompanyAdmin cLenovo =new CompanyAdmin("","","","","");
     CompanyAdmin cSamsung =new CompanyAdmin("","","","","");
-    
+   
      CompanyAdmin c_admins[]={cDell,cLenovo,cSamsung};
     
     
     CompanyAdmin.Insert_CompanyAdmins(c_admins);
     
+    
+    cDell=c_admins[0];
+    cLenovo=c_admins[1];
+    cSamsung=c_admins[2];
     
     
     
@@ -225,11 +198,11 @@ JobPoster j3=new JobPoster("mohamed", "mohamed", "mohamed", "mohamed");
    JobPoster.Insert_JP_SAMSUNG(j_poster3);
   */
     
-JobPost jpp1=new JobPost("JOBPOST", "NEEDED A BACKEND ENGINEER");
+JobPost jpp1=new JobPost("Backend role in Cairo", "NEEDED A BACKEND ENGINEER for a work");
    JobPost jpp2=new JobPost("JOBPOST2", "NEEDED A BACKEND ENGINEER ya sabry ");
    JobPost [] jPostDell ={jpp1, jpp2};
    
-   JobPost jpp3=new JobPost("JOBPOST", "NEEDED A BACKEND ENGINEER");
+   JobPost jpp3=new JobPost("Front End Role", "NEEDED A FrontEnd ENGINEER");
    JobPost jpp4=new JobPost("JOBPOST2", "NEEDED A BACKEND ENGINEER ya sabry ");
    JobPost [] jPostLenovo ={jpp3, jpp4};
    
@@ -250,50 +223,20 @@ int[]rev3={4,5,3};
        Company Samsung=new Company("Samsung",cSamsung,25,jpSamsung, jPostSamsung, rev3);
        
        Company [] companies={Dell, Lenovo, Samsung};
-   // Stack<JobPost>STACK=new Stack<JobPost>();
-        
-//JobPost jp=new JobPost("need a web developer ", " Our Company need developer for a very huge project call 01023720711 \n or Apply for the job here ");
-   // STACK.push(jp);
-   /*
    
-   
-   */
-   /*
-   ArrayList<JobPost>jpList=new ArrayList<>();
-   
-   JobPost jppp1=new JobPost("JOBPOST", "NEEDED A BACKEND ENGINEER");
-    JobPost jppp2=new JobPost("JOBPOST", "NEEDED A BACKEND ENGINEER");
-     JobPost jppp3=new JobPost("JOBPOST", "NEEDED A BACKEND ENGINEER");
-     
-    jpList.add(jppp1);
-    jpList.add(jppp2);
-    jpList.add(jppp3);
-   */
-   
-    
       
    //String CompName, String CompAdmin, int CompNumberOfEmployees,
-           //JobPoster[] CompJobPosters, JobVacancy[] CompJobVacancies, float CompReviews[]
-    /*
-       Company c1 =new Company("mohamed","mohamed",12,JobPostersOfDELL, )
-      System.out.println("Enter your email: ");
-        String mail=input.next();   
-        System.out.println("Enter your password: ");
-        String pass=input.next(); 
-        //open Login as an administator 
-        System.out.println("Login as an Admin ");
-        
-       SystemUser.Login(c_admins,mail,pass);
+     
+   
     
-       */
-    
-    
+           System.out.println("How Are you");
+      
        
         int opt;
         boolean companyRegistered=false;
         
         String Continue="Continue";
-        while(Continue.equals("Continue"))
+        while(Continue.equals("Continue"))  //main loop
         {
             
        
@@ -301,27 +244,35 @@ int[]rev3={4,5,3};
         //Options 
   
         //Add a loop to repeat taking options from user 
-        System.out.print("What Do you Want to Do \n 1.Login as JobPoster\n 2.Browse Jobs \n 3.AddReviews \n 4.Apply to a Job \n 5.Run as administrator \n 6.Display Company Info \n 7.Exit ");
+        System.out.print("What Do you Want to Do \n 1.Log in to Your Company\n 2.Browse Jobs \n 3.AddReviews \n 4.Apply to a Job \n 5.Run as administrator \n 6.Display Company Info \n 7.Exit ");
         opt =input.nextInt();
         
         
-        //boolean LoggedIn=false;
-        //input opt  and delete the zero above :)
+        //opt 1
         if(opt==1){
-         
+         //using labels instead of goto
+         outer:{
+             
             boolean LoggedIn=false;
-            System.out.println("Option 1");
+            System.out.println("Option 1 \n ");
     
             
             System.out.println("Which Company you are in ?\n ");
             String CompanyChoice=input.next();
           
+            inner:{
+            System.out.println("Continue or Just Registering to the Company \t ..to Continue Press 1 \t Quit Press any Number");
+            int optionToContinue=input.nextInt();
+            if(optionToContinue==1){
+                
+            
+            
                 System.out.println("Login as Job poster ");
-      System.out.println("Enter your email: ");
+        System.out.println("Enter your email: ");
         String mail2=input.next();   
         System.out.println("Enter your password: ");
         String pass2=input.next(); 
-        
+            
        //n is intialized in the global scope 
         
           if(CompanyChoice.equals("Dell")){
@@ -337,6 +288,8 @@ int[]rev3={4,5,3};
                  LoggedIn=SystemUser.Login(jpSamsung, mail2, pass2);
                   numberChoice=2;
             }
+              
+            
               
         
          if(LoggedIn){
@@ -370,34 +323,44 @@ int[]rev3={4,5,3};
            
              System.out.println("The JobPost now appears like \n"+"\t"+"JobPost name \t "+jp10.name+"\t"+jp10.description+"\n");
              
-             //jpList.add(jp10);
-//assuming that this is an array list 
+            
              }
+         
+         
+            
+         
          }
              else{
                  System.out.println("Have a good LOOK");
                  continue;
              }
-            //JobPoster.AddJobPosts(jv[0],choice, choice2);
-             
-             //System.out.println("\n job after changing is  "+jv[0].Postname+"\n Number of Applicants are "+jv[0].Applicants);
-             
-             //another way 
+         
+            }
+            else{
+                for(int i=0 ;i<companies.length;i++){
+                    if(CompanyChoice.equals(companies[i].CompanyName)){
+                        numberChoice=i;
+                        companyRegistered=true;
+                    }
+                }
+                
+                break inner;
+            }
+            
+            } 
+            
           
+             
+         }
+         
+            
          }
         
         
             
-        
+    //opt 2    
         else if(opt==2){
-            /*
-            System.out.println("Option 2 \n ");
-            for( int i=0; i<jp.length; i++){
-                System.out.println("JobPost "+(i+1)+ "\n Job post title"+jp[i].name+"\n Jobpost Description: \n "+jp[i].description);
-            }
-*/
-           // System.out.println("Job Posts are "+Arrays.toString(STACK.toArray()));//look for purified Stack display 
-            //STACK.forEach(System.out::println);
+       
             if(companyRegistered)
             {
             System.out.println("Job Posts avialable are as follows :");
@@ -405,21 +368,21 @@ int[]rev3={4,5,3};
             {
             for(int i=0; i<jPostDell.length; i++){
                 //jobPost array must be pushed succesfully 
-                System.out.println("Job Post:"+(i+1) +" \n "+"Name:"+jPostDell[i].name+"\n Description "+jPostDell[i].description);
+                System.out.println("Job Post:"+(i+1) +" \n "+"Company-Name :\t Dell"+"\n Title:"+jPostDell[i].name+"\n Description "+jPostDell[i].description);
             }
             }
               if(numberChoice==1)
             {
             for(int i=0; i<jPostLenovo.length; i++){
                 //jobPost array must be pushed succesfully 
-                System.out.println("Job Post:"+(i+1) +" \n "+"Name:"+jPostLenovo[i].name+"\n Description "+jPostLenovo[i].description);
+                System.out.println("Job Post:"+(i+1) +" \n "+"Company-Name :\t Lenovo"+"\n Title:"+jPostLenovo[i].name+"\n Description "+jPostLenovo[i].description);
             }
             }
                 if(numberChoice==2)
             {
             for(int i=0; i<jPostSamsung.length; i++){
                 //jobPost array must be pushed succesfully 
-                System.out.println("Job Post:"+(i+1) +" \n "+"Name:"+jPostSamsung[i].name+"\n Description "+jPostSamsung[i].description);
+                System.out.println("Job Post:"+(i+1) +" \n "+"Company-Name :\t Samsung"+"\n Title:"+jPostSamsung[i].name+"\n Description "+jPostSamsung[i].description);
             }
             }
         }
@@ -429,102 +392,84 @@ int[]rev3={4,5,3};
         }
         
         else if(opt==3){
-            //
-           System.out.println("Option 3");
-             //AddReview()  //need the push array method 
-            
-            //addReviews(int n , Company comp, float newElement ){
-            
-          
+        
+         
+          if(companyRegistered){
          int  n=0;
             while(true)
             {
-            System.out.println("Enter the review you want to add ");
+            System.out.println("Enter the review you want to add (From 1 to 10) ");
         int choice=input.nextInt();
-       
-        //int[]myrev={1,2,3};
-        //int[]revv=new int[n];
-       if(numberChoice==0)
-        Dell.CompanyReviews=addReviews(n, Dell.CompanyReviews, choice);
-       
         
-        if(numberChoice==1)
-        Lenovo.CompanyReviews=addReviews(n, Lenovo.CompanyReviews, choice);
-        
-         if(numberChoice==2)
-        Samsung.CompanyReviews=addReviews(n, Samsung.CompanyReviews, choice);
-       /*
-            System.out.println("\n The Reviews now will be seen as ");
-            for(int i=0; i<comp.CompanyReviews.length;i++){
-                System.out.println("\n review "+(i+1) +"  is \t"+comp.CompanyReviews[i]);
-            }
-        */
+       if( choice>10 ||choice<1){
+           System.out.println("Enter n from 1 to 10 ");
+           break;
+       }
+          
+     
+//       if(numberChoice==0)
+//        Dell.CompanyReviews=addReviews(n, Dell.CompanyReviews, choice);
+//       
+//        
+//        if(numberChoice==1)
+//        Lenovo.CompanyReviews=addReviews(n, Lenovo.CompanyReviews, choice);
+//        
+//         if(numberChoice==2)
+//        Samsung.CompanyReviews=addReviews(n, Samsung.CompanyReviews, choice);
+         
+         companies[numberChoice].CompanyReviews=addReviews(n,companies[numberChoice].CompanyReviews,choice);
+     
             
-                System.out.println("add another review");
+               
+           System.out.println("add another review");
                 String choice2=input.next();
                 if(choice2.equals("no"))
                     break;
                 
                 n++;
-            }
+             
+            
             
             System.out.println("\n Now lets see the reviews \n  ");
             
-             if(numberChoice==0)
-             {
-            for(int i=0; i<Dell.CompanyReviews.length;i++){
-                System.out.println("\n review "+(i+1) +"  is \t"+Dell.CompanyReviews[i]);
+//             if(numberChoice==0)
+//             {
+//            for(int i=0; i<Dell.CompanyReviews.length;i++){
+//                System.out.println("\n review "+(i+1) +"  is \t"+Dell.CompanyReviews[i]);
+//            }
+//             }
+//              if(numberChoice==1)
+//             {
+//            for(int i=0; i<Lenovo.CompanyReviews.length;i++){
+//                System.out.println("\n review "+(i+1) +"  is \t"+Lenovo.CompanyReviews[i]);
+//            }
+//             }
+//               if(numberChoice==2)
+//             {
+//            for(int i=0; i<Samsung.CompanyReviews.length;i++){
+//                System.out.println("\n review "+(i+1) +"  is \t"+Samsung.CompanyReviews[i]);
+//            }
+//            
+//             }
+  float avgReviews=calculateAverageReviews(companies[numberChoice].CompanyReviews);
+
+                 for(int i=0; i<companies[numberChoice].CompanyReviews.length;i++){
+                System.out.println("\n review "+(i+1) +"  is \t"+companies[numberChoice].CompanyReviews[i]);
+                     System.out.println("Average Reviews is \t"+avgReviews);
             }
-             }
-              if(numberChoice==1)
-             {
-            for(int i=0; i<Lenovo.CompanyReviews.length;i++){
-                System.out.println("\n review "+(i+1) +"  is \t"+Lenovo.CompanyReviews[i]);
-            }
-             }
-               if(numberChoice==2)
-             {
-            for(int i=0; i<Samsung.CompanyReviews.length;i++){
-                System.out.println("\n review "+(i+1) +"  is \t"+Samsung.CompanyReviews[i]);
-            }
-             }
-               
-        /*
-        int i; 
-  
-        // create a new array of size n+1 
-       int newarr[] = new int[n]; 
-  
-        // insert the elements from 
-        // the old array into the new array 
-        // insert all elements till n 
-        // then insert x at n+1 
-        for (i = 0; i < n; i++) 
-            newarr[i] = arr[i]; 
-  
-        newarr[n] = newElement; 
-  
-        System.out.println("new review have been pushed with value of "+newarr[n]);
-        */
-        
-       /*
-           try{
-            addReviews(rev.length,rev,choice);
             
-            System.out.println("The new review will be seen as "+comp.CompanyReviews[comp.CompanyReviews.length]);
-           for(int i=0; i<rev.length; i++){
-               
-               System.out.println("\n review : "+(i+1)+" \t"+comp.CompanyReviews[i]);
-           }
-           }
-           catch(Exception e ){
-               System.out.println("we have found exception ya sabry:"+e );
-           }
-           finally{
-               
-           }
-*/
+            
+    
+            
+            }
+        }else{
+             System.out.println("Please Register to your Company  add  ln 411 below");
+              
+          }
         }
+        
+        
+        
         else  if(opt==4){
              System.out.println("Option 4");
         
@@ -550,20 +495,20 @@ int[]rev3={4,5,3};
                 {
                      for(int i=0; i<jPostDell.length; i++){
               
-                System.out.println("Job Post:"+(i+1) +" \n "+"Name:"+jPostDell[i].name+"\n Description "+jPostDell[i].description);
+                System.out.print("Job Post:"+(i+1) +" \n "+"Name:"+jPostDell[i].name+"\n Description "+jPostDell[i].description);
                      }
                 }
                  if(numberChoice==1)
                 {
                   for(int i=0; i<jPostLenovo.length; i++){
                 
-                System.out.println("Job Post:"+(i+1) +" \n "+"Name:"+jPostLenovo[i].name+"\n Description "+jPostLenovo[i].description);   
+                System.out.print("Job Post:"+(i+1) +" \n "+"Name:"+jPostLenovo[i].name+"\n Description "+jPostLenovo[i].description);   
                 }
                   if(numberChoice==2)
                 {
                      for(int i=0; i<jPostSamsung.length; i++){
               
-                System.out.println("Job Post:"+(i+1) +" \n "+"Name:"+jPostSamsung[i].name+"\n Description "+jPostSamsung[i].description);
+                System.out.print("Job Post:"+(i+1) +" \n "+"Name:"+jPostSamsung[i].name+"\n Description "+jPostSamsung[i].description);
                 }
               System.out.println("Job Posts avialable are as follows :");
            
@@ -626,17 +571,20 @@ int[]rev3={4,5,3};
   
            else if(opt==6){
             //enter the company you want to display 
-            //System.out.println("Enter the name of the comapny you want to see"); encapsulization is needed 
+            //System.out.println("Enter the name of the company you want to see"); encapsul. is needed 
             if(companyRegistered)
             {
+                float avgReview=calculateAverageReviews(companies[numberChoice].CompanyReviews);
+                
+                
             if(numberChoice==0)
-         DisplayCompanyInfo(Dell);
+         DisplayCompanyInfo(Dell, avgReview);
             
                        if(numberChoice==1)
-         DisplayCompanyInfo(Lenovo);
+         DisplayCompanyInfo(Lenovo,avgReview);
                   
                       if(numberChoice==2)
-         DisplayCompanyInfo(Samsung);
+         DisplayCompanyInfo(Samsung, avgReview);
            
             }
             else{
@@ -649,6 +597,19 @@ int[]rev3={4,5,3};
               System.out.print("Thank you for visiting us ");
             break;
                
+           }
+           else if(opt==8){
+               
+               
+               System.out.println("------------All The companies Info Combined----------------------");
+               for(int i=0; i<companies.length; i++){
+                   System.out.println(" \n Reviews for the company  indexed"+i);
+                   if(companies[i].CompanyReviews!=null){
+                   for(int j=0; j<companies[i].CompanyReviews.length;j++)
+                       System.out.println(companies[i].CompanyReviews[j]+" \n" );
+               }
+                   
+               }
            }
         else{
             System.out.println("Invalid entry");
