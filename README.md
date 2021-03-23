@@ -13,7 +13,7 @@ Then run it on your command line in your prefered location in your device
 <li>run as administrator, so you can change your company name and fire employees 😁<l/i>
 <li>Add reviews for companies and apply for companies jobs</li>
   </ul>
-<h2>You can also try to make a pull request and try the very first contribution, if you are new here like me 😊</h2>
+<h2>You can also try to make a pull request and try the very first contribution, if you are new here😊</h2>
 <ol>
   <h4>These steps can help you</h4>
   
