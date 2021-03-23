@@ -45,30 +45,16 @@ static void DisplayCompanyInfo(Company comp, float avgReview){
 }
 static void DisplayCompanyInfo(Company comp){//for the view of the system admin (no need to know the average reviews)
     System.out.println("\n Company name is "+comp.CompanyName+"\n Company number of Employees are "+comp.CompanyNumberOfEmployees);
-    System.out.println("\n And for the reviews ");
-    if(comp.CompanyReviews!=null)
-    {
-    for(int i=0; i<comp.CompanyReviews.length;i++){
-        
-        System.out.println("\n review"+(i+1)+" is \t"+comp.CompanyReviews[i]);
-        
-    }
   
-    }
-    else{
-        System.out.println("\n There is no reviews added till now  ");
-    }
+    
+   
 }
 
     static void SearchJobPosts(String desiredJobPost, JobPost[] jobPost){//also exist in the company class for a check 
         for(int i=0; i<jobPost.length;i++){
             if(desiredJobPost.equals(jobPost[i].name)){
                 System.out.print("found a match and it is "+jobPost[i].name+"Which is equals to "+desiredJobPost);
-                for(int j=0; j<20;i++){
-                    if(j==0)
-                System.out.print("\n Loading.. ");
-                    System.out.print(".");
-                }
+               
                 System.out.println("\nJob post Found \n "+jobPost[i].name+"\t"+jobPost[i].description);
                 break;
                 
@@ -115,7 +101,8 @@ public static JobPost[] addJobPosts(int n , JobPost arr[], JobPost newObject){//
 }
 public static float calculateAverageReviews(int [] reviews){
   
-   float sum=0;          
+   float sum=0;     
+   if(reviews[0]!=0||reviews!=null)
     for(int i=0; i<reviews.length; i++)
         sum+=(float)reviews[i];//preventing type conversion
     
@@ -137,7 +124,7 @@ public static float calculateAverageReviews(int [] reviews){
         
       int numberChoice=0;
      
-     
+     float avgReviews;
        
        
         
@@ -166,7 +153,7 @@ JobPoster j1=new JobPoster("Mohamed Hosam", "sabry", "sabry123", "Job Poster");
    JobPoster jpSamsung[]={jp7};
   
    
-        
+        JobPoster J[] ={j1,jp4,jp7};
     CompanyAdmin cDell =new CompanyAdmin("","","","","");
     CompanyAdmin cLenovo =new CompanyAdmin("","","","","");
     CompanyAdmin cSamsung =new CompanyAdmin("","","","","");
@@ -275,21 +262,22 @@ int[]rev3={4,5,3};
             
        //n is intialized in the global scope 
         
-          if(CompanyChoice.equals("Dell")){
-                 LoggedIn=SystemUser.Login(jpDell, mail2, pass2);
-                 numberChoice=0;
-            }
-             if(CompanyChoice.equals("Lenovo")){
-                 LoggedIn=SystemUser.Login(jpLenovo, mail2, pass2);
-                 numberChoice=1;
-            }
-              if(CompanyChoice.equals("Samsung")){
-                  
-                 LoggedIn=SystemUser.Login(jpSamsung, mail2, pass2);
-                  numberChoice=2;
-            }
+//          if(CompanyChoice.equals("Dell")){
+//                 LoggedIn=SystemUser.Login(jpDell, mail2, pass2);
+//                 numberChoice=0;
+//            }
+//             if(CompanyChoice.equals("Lenovo")){
+//                 LoggedIn=SystemUser.Login(jpLenovo, mail2, pass2);
+//                 numberChoice=1;
+//            }
+//              if(CompanyChoice.equals("Samsung")){
+//                  
+//                 LoggedIn=SystemUser.Login(jpSamsung, mail2, pass2);
+//                  numberChoice=2;
+//            }
+//              if(companies[numberChoice].CompanyName.equals(""))
               
-            
+               LoggedIn=SystemUser.Login(J[numberChoice], mail2, pass2);
               
         
          if(LoggedIn){
@@ -310,8 +298,7 @@ int[]rev3={4,5,3};
             
              String choice3=input.next();
              JobPost jp10=new JobPost(choice,choice3 );    //thn push to the main array 
-            // STACK.push(jp10);
-           // addJobPosts(int n , JobPost arr[], JobPost newObject)
+            
            if(numberChoice==0)
            jPostDell=addJobPosts(jPostDell.length, jPostDell, jp10);
            
@@ -451,7 +438,7 @@ int[]rev3={4,5,3};
 //            }
 //            
 //             }
-  float avgReviews=calculateAverageReviews(companies[numberChoice].CompanyReviews);
+ avgReviews=calculateAverageReviews(companies[numberChoice].CompanyReviews);
 
                  for(int i=0; i<companies[numberChoice].CompanyReviews.length;i++){
                 System.out.println("\n review "+(i+1) +"  is \t"+companies[numberChoice].CompanyReviews[i]);
@@ -572,20 +559,22 @@ int[]rev3={4,5,3};
            else if(opt==6){
             //enter the company you want to display 
             //System.out.println("Enter the name of the company you want to see"); encapsul. is needed 
+            
             if(companyRegistered)
             {
-                float avgReview=calculateAverageReviews(companies[numberChoice].CompanyReviews);
-                
-                
-            if(numberChoice==0)
-         DisplayCompanyInfo(Dell, avgReview);
+//                try{
+//                float avgReview=calculateAverageReviews(companies[numberChoice].CompanyReviews);
+//                }
+//                catch(Exception e ){
+//                    System.out.println("Found an Exception"+e.getMessage());
+//                }
+//                finally{
+//                    
+//                float avgReview=0.0f;
             
-                       if(numberChoice==1)
-         DisplayCompanyInfo(Lenovo,avgReview);
-                  
-                      if(numberChoice==2)
-         DisplayCompanyInfo(Samsung, avgReview);
-           
+            
+//            
+            DisplayCompanyInfo(companies[numberChoice]);
             }
             else{
                 System.out.println("Please register to your Company");

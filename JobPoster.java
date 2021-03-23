@@ -40,6 +40,7 @@ public class JobPoster extends SystemUser {
     }
 
     
+    
     //His Last Function: He can't view job seeker's other applications to other companies
     //w dy ana lesa msh 3rfa hatt3ml ezay
 }
