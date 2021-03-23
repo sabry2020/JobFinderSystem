@@ -32,15 +32,15 @@ public abstract class SystemUser {
     }
     
     
-         static boolean Login(JobPoster[] jp, String mail, String pass) {
+         static boolean Login(JobPoster jp, String mail, String pass) {
         
              System.out.println("Logging in as a JobPoster ");
         
-        for (int i =0; i<jp.length; i++){
-            if(jp[i].UserEmail.equals(mail)){
-                if(jp[i].UserPassword.equals(pass)){
-                    System.out.println("Found a user number"+(i+1));
-                    System.out.println("You are Logged IN successfultttt");
+      
+            if(jp.UserEmail.equals(mail)){
+                if(jp.UserPassword.equals(pass)){
+                    System.out.println("Found the user");
+                    System.out.println("You are Logged IN successful");
                    return true;
                 }
                 
@@ -52,10 +52,10 @@ public abstract class SystemUser {
                         
             }
             
-            
+            return false;
         }
-        return false;
-         }
+        
+         
            /*
              if ((mail.equals(c_admins[0].UserEmail)) || (mail.equals(c_admins[1].UserEmail)) || (mail.equals(c_admins[2].UserEmail))) {
                  System.out.println("Welcome admin");
@@ -80,7 +80,7 @@ public abstract class SystemUser {
                  System.out.println(" INVALID ENTRY");
             } 
     */
-         
+
     public String UserName;
     public String UserEmail;
     public String UserPassword;
@@ -98,4 +98,9 @@ public abstract class SystemUser {
     public void UserInfo_Validation() {
     
     }
+    
+//    abstract float Newfeature();
+    
+        
+    
 }
