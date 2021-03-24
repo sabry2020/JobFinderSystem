@@ -11,7 +11,7 @@ public class JobFINDERSYS {
     
                           //Custom Functions   
    
-static void ChangeCompanyInfo(Company comp, String choice, boolean canFire){
+static Company ChangeCompanyInfo(Company comp, String choice, boolean canFire){
     
     DisplayCompanyInfo(comp);
     comp.CompanyName=choice;
@@ -24,6 +24,7 @@ if(canFire){
                comp.CompanyNumberOfEmployees=0;
             
         }
+return comp;
 }
         
 static void DisplayCompanyInfo(Company comp, float avgReview){
@@ -124,7 +125,8 @@ public static float calculateAverageReviews(int [] reviews){
         
       int numberChoice=0;
      
-     float avgReviews;
+     float avgReviews=0.0f;
+     boolean companyReviewed=false;
        
        
         
@@ -197,6 +199,8 @@ JobPost jpp1=new JobPost("Backend role in Cairo", "NEEDED A BACKEND ENGINEER for
    JobPost jpp5=new JobPost("JOBPOST", "NEEDED A BACKEND ENGINEER");
    JobPost jpp6=new JobPost("JOBPOST2", "NEEDED A BACKEND ENGINEER ya sabry ");
    JobPost [] jPostSamsung ={jpp5, jpp6};
+   
+   
    
    
 int []reviews={1, 2 , 3};
@@ -355,22 +359,26 @@ int[]rev3={4,5,3};
             {
             for(int i=0; i<jPostDell.length; i++){
                 //jobPost array must be pushed succesfully 
-                System.out.println("Job Post:"+(i+1) +" \n "+"Company-Name :\t Dell"+"\n Title:"+jPostDell[i].name+"\n Description "+jPostDell[i].description);
+                System.out.println("Job Post:"+(i+1) +" \n "+companies[numberChoice].CompanyName+"\n Title:"+jPostDell[i].name+"\n Description "+jPostDell[i].description);
             }
             }
               if(numberChoice==1)
             {
             for(int i=0; i<jPostLenovo.length; i++){
                 //jobPost array must be pushed succesfully 
-                System.out.println("Job Post:"+(i+1) +" \n "+"Company-Name :\t Lenovo"+"\n Title:"+jPostLenovo[i].name+"\n Description "+jPostLenovo[i].description);
+                System.out.println("Job Post:"+(i+1) +" \n "+companies[numberChoice].CompanyName+"\n Title:"+jPostLenovo[i].name+"\n Description "+jPostLenovo[i].description);
             }
             }
                 if(numberChoice==2)
             {
             for(int i=0; i<jPostSamsung.length; i++){
                 //jobPost array must be pushed succesfully 
-                System.out.println("Job Post:"+(i+1) +" \n "+"Company-Name :\t Samsung"+"\n Title:"+jPostSamsung[i].name+"\n Description "+jPostSamsung[i].description);
+                System.out.println("Job Post:"+(i+1) +" \n "+companies[numberChoice].CompanyName+"\n Title:"+jPostSamsung[i].name+"\n Description "+jPostSamsung[i].description);
             }
+//                for(int i=0; i<jPostSamsung.length; i++){
+//               
+//              System.out.println("Job Post:"+(i+1) +" \n "+"Company-Name :\t Samsung"+"\n Title:"+companies[numberChoice].CompanyName+"\n Description "+companies.description);
+//            }
             }
         }
             else{
@@ -419,26 +427,13 @@ int[]rev3={4,5,3};
             
             System.out.println("\n Now lets see the reviews \n  ");
             
-//             if(numberChoice==0)
-//             {
-//            for(int i=0; i<Dell.CompanyReviews.length;i++){
-//                System.out.println("\n review "+(i+1) +"  is \t"+Dell.CompanyReviews[i]);
-//            }
-//             }
-//              if(numberChoice==1)
-//             {
-//            for(int i=0; i<Lenovo.CompanyReviews.length;i++){
-//                System.out.println("\n review "+(i+1) +"  is \t"+Lenovo.CompanyReviews[i]);
-//            }
-//             }
-//               if(numberChoice==2)
-//             {
-//            for(int i=0; i<Samsung.CompanyReviews.length;i++){
-//                System.out.println("\n review "+(i+1) +"  is \t"+Samsung.CompanyReviews[i]);
-//            }
-//            
-//             }
- avgReviews=calculateAverageReviews(companies[numberChoice].CompanyReviews);
+
+            
+            avgReviews=calculateAverageReviews(companies[numberChoice].CompanyReviews);
+ 
+ 
+ 
+ companyReviewed=true;
 
                  for(int i=0; i<companies[numberChoice].CompanyReviews.length;i++){
                 System.out.println("\n review "+(i+1) +"  is \t"+companies[numberChoice].CompanyReviews[i]);
@@ -482,20 +477,20 @@ int[]rev3={4,5,3};
                 {
                      for(int i=0; i<jPostDell.length; i++){
               
-                System.out.print("Job Post:"+(i+1) +" \n "+"Name:"+jPostDell[i].name+"\n Description "+jPostDell[i].description);
+                System.out.print("Job Post:"+(i+1) +" \n "+"Name:"+companies[numberChoice].CompanyName+"\n Description "+jPostDell[i].description);
                      }
                 }
                  if(numberChoice==1)
                 {
                   for(int i=0; i<jPostLenovo.length; i++){
                 
-                System.out.print("Job Post:"+(i+1) +" \n "+"Name:"+jPostLenovo[i].name+"\n Description "+jPostLenovo[i].description);   
+                System.out.print("Job Post:"+(i+1) +" \n "+"Name:"+companies[numberChoice].CompanyName+"\n Description "+jPostLenovo[i].description);   
                 }
                   if(numberChoice==2)
                 {
                      for(int i=0; i<jPostSamsung.length; i++){
               
-                System.out.print("Job Post:"+(i+1) +" \n "+"Name:"+jPostSamsung[i].name+"\n Description "+jPostSamsung[i].description);
+                System.out.print("Job Post:"+(i+1) +" \n "+"Name:"+companies[numberChoice].CompanyName+"\n Description "+jPostSamsung[i].description);
                 }
               System.out.println("Job Posts avialable are as follows :");
            
@@ -531,16 +526,16 @@ int[]rev3={4,5,3};
            if(choice3.equals("yes"))
                boolChoice=true;
            
-           if(numberChoice==0)
-           ChangeCompanyInfo(Dell, choice, boolChoice);
+//           if(numberChoice==0)
+//           ChangeCompanyInfo(Dell, choice, boolChoice);
+//           
+//            if(numberChoice==1)
+//           ChangeCompanyInfo(Lenovo, choice, boolChoice); 
+//            
+//            if(numberChoice==2)
+//          ChangeCompanyInfo(Samsung, choice, boolChoice);
            
-            if(numberChoice==1)
-           ChangeCompanyInfo(Lenovo, choice, boolChoice); 
-            
-            if(numberChoice==2)
-          ChangeCompanyInfo(Samsung, choice, boolChoice);
-           
-            
+            companies[numberChoice]=ChangeCompanyInfo(companies[numberChoice],choice,boolChoice);
             
              System.out.println("Latest Changes ");
            DisplayCompanyInfo(companies[numberChoice]);
@@ -572,9 +567,13 @@ int[]rev3={4,5,3};
 //                    
 //                float avgReview=0.0f;
             
-            
-//            
-            DisplayCompanyInfo(companies[numberChoice]);
+            if(companyReviewed)
+            {
+            DisplayCompanyInfo(companies[numberChoice], avgReviews);
+            }
+            else{
+                DisplayCompanyInfo(companies[numberChoice]);
+            }
             }
             else{
                 System.out.println("Please register to your Company");
