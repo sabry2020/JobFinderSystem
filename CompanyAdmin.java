@@ -17,18 +17,18 @@ public class CompanyAdmin extends SystemUser {
     
     //One Company Admin For Each of The Three Companies    
     public static void Insert_CompanyAdmins( CompanyAdmin c_admins[]){
-        c_admins[0].UserName= "Adham Dell";
-        c_admins[0].UserEmail= "m";
-        c_admins[0].UserPassword= "m";
-        c_admins[0].UserType= "Company Admin";
-        c_admins[1].UserName= "Sabry Lenovo";
-        c_admins[1].UserEmail= "sabry_calenovo@gmail.com";
-        c_admins[1].UserPassword= "sabryca2020lenovo";
-        c_admins[1].UserType= "Company Admin";
-        c_admins[2].UserName= "Habiba Samsung";
-        c_admins[2].UserEmail= "habiba_casamsung@gmail.com";
-        c_admins[2].UserPassword= "habibaca2020samsung";
-        c_admins[2].UserType= "Company Admin";    
+        c_admins[0].UserName= "Admin Dell";
+        c_admins[0].UserEmail= "adminDell@gmail.com";
+        c_admins[0].UserPassword= "admin1";
+        c_admins[0].UserType= "Admin of Dell company";
+        c_admins[1].UserName= "admin Lenovo";
+        c_admins[1].UserEmail= "adminLenovo@gmail.com";
+        c_admins[1].UserPassword= "admin2";
+        c_admins[1].UserType= "Admin of Lenovo company";
+        c_admins[2].UserName= " admin Samsung";
+        c_admins[2].UserEmail= "adminSamsung@gmail.com";
+        c_admins[2].UserPassword= "admin3";
+        c_admins[2].UserType= "Admin of Samsung company";    
     }
     public boolean AcceptTorRejectF_JobApplication(JobVacancy V[]){
          

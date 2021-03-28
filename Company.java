@@ -40,5 +40,6 @@ public class Company {
                 System.out.println(i+") "+CompanyJobVacancies[i]);               
         }
     } 
+    
 }
 

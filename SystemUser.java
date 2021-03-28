@@ -7,46 +7,44 @@ public abstract class SystemUser {
     public JobPoster JobPostersOfLENOVO[]= new JobPoster[3];
     public JobPoster JobPostersOfSAMSUNG[]= new JobPoster[3];
     
-    static boolean  Login(CompanyAdmin[] c_admins, String mail, String pass) {
+    static boolean  Login(CompanyAdmin c_admins, String mail, String pass) {
         
        
         
-        for (int i =0; i<c_admins.length; i++){
-            if(c_admins[i].UserEmail.equals(mail)){
-                if(c_admins[i].UserPassword.equals(pass)){
-                    System.out.println("Found a user with number"+(i+1));
-                    System.out.println("You are Logged IN successfultttt");
+//        for (int i =0; i<c_admins.length; i++){
+            if(c_admins.UserEmail.equals(mail)){
+                if(c_admins.UserPassword.equals(pass)){
+                    System.out.println("\n*******************\n -Logged In Successfully:\n \n account details:\n\n -Email:" +"\t"+c_admins.UserEmail+"\n Member Type: "+c_admins.UserType+"\n Password: *********");
                    return true;
                 }
                 
             }
             else{
-                System.out.println("Not correct email or password");
+                System.out.println("\n Not correct email or password");
               return false;
               
             }
             
             
-        }
+//        }
         return false;
     }
     
     
          static boolean Login(JobPoster jp, String mail, String pass) {
-        
-             System.out.println("Logging in as a JobPoster ");
+       
         
       
             if(jp.UserEmail.equals(mail)){
                 if(jp.UserPassword.equals(pass)){
-                    System.out.println("Found the user");
-                    System.out.println("You are Logged IN successful");
+                    System.out.println("\n Logged In Successfully:\n \n -account details:\n Email:" +"\t"+jp.UserEmail+"\n \n Member Type: "+jp.UserType+"\n \n Password: *********");
+                    System.out.println("");
                    return true;
                 }
                 
             }
             else{
-                System.out.println("Not correct email or password");
+                System.out.println("Invalid email or password");
                 return false;
               
                         
@@ -54,6 +52,7 @@ public abstract class SystemUser {
             
             return false;
         }
+         
         
          
            /*

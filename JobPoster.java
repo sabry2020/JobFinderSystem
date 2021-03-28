@@ -1,4 +1,4 @@
-package jobfindersys;
+ package jobfindersys;
 
 
 public class JobPoster extends SystemUser {
